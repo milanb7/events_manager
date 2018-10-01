@@ -1,5 +1,6 @@
 // THIS IS A COMMENT 1
 // THIS IS A COMMENT 2
+// THIS IS A COMMENT 22ß
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
