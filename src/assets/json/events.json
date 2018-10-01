@@ -1,0 +1,12 @@
+[
+  {"id": 0, "title": "Happy Hour", "description": "All you can eat (candy)", "location": "SK, Bratisalva", "owner": true, "startDate": "2018-09-01T21:53:50.341Z", "endDate": "2019-09-01T23:15:50.341Z" },
+  {"id": 1, "title": "Click for Google", "description": "Programer for world", "location": "CZ, Ostrava", "owner": false, "startDate": "2016-09-01T21:00:00.341Z", "endDate": "2016-09-01T23:00:00.341Z"},
+  {"id": 2, "title": "Shakira (UK)", "description": "Concert waka-waka", "location": "London", "owner": true, "startDate": "2018-09-04T10:00:00.021Z", "endDate": "2018-09-04T14:00:00.021Z"},
+  {"id": 3, "title": "I'm programmer (USA)", "description": "Dancing...", "location": "NY, USA", "owner": false, "startDate": "2020-11-18T18:00:00.518Z", "endDate": "2020-11-20T20:00:00.518Z"},
+  {"id": 4, "title": "Car showroom", "description": "Porshe, Ferrari ...  ", "location": "Italy, Milano", "owner": true, "startDate": "2020-09-01T10:00:00.341Z", "endDate": "2020-09-05T20:00:00.341Z"},
+  {"id": 5, "title": "Corporate evening", "description": "Only, only meat", "location": "Pizzeria, France", "owner": false, "startDate": "2019-02-01T20:30:00.341Z", "endDate": "2019-02-01T23:30:00.341Z"},
+  {"id": 6, "title": "Game time", "description": "CS", "location": "In the company", "owner": true, "startDate": "2020-05-01T08:15:00.341Z", "endDate": "2020-05-10T20:20:00.341Z"},
+  {"id": 7, "title": "How cook", "description": "For your boyfriend", "location": "In your kitchen :)", "owner": false, "startDate": "2019-06-01T18:50:00.341Z", "endDate": "2019-06-01T20:20:00.341Z"}
+]
+
+

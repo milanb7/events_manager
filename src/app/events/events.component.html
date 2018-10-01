@@ -1,0 +1,94 @@
+<div class="vertical-center" >
+  <div class="container">
+
+    <div class="row">
+      <div class="col text-center p-3">
+        <h3>Events manager</h3>
+        <div class="alert alert-danger" role="alert" *ngIf="(eventsListState$ | async).loadFailure">{{(eventsListState$ | async).loadFailure}}</div>
+        <div class="alert alert-info" role="alert" *ngIf="(eventsListState$ | async).isLoading">Loading events ...</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <form>
+          <div class="form-row form-vertical-middle">
+            <div class="col-auto">
+              <label class="col-form-label col-form-label-md font-weight-bold">Filters:</label>
+            </div>
+            <div class="col-auto">
+              <input type="text" class="form-control mb-2 form-control-sm" placeholder="Title" name="title" [(ngModel)]="title">
+            </div>
+            <div class="col-auto">
+              <input type="text" class="form-control mb-2 form-control-sm" placeholder="Description" name="description" [(ngModel)]="description" >
+            </div>
+            <div class="col-auto">
+              <input type="text" class="form-control mb-2 form-control-sm" placeholder="Location" name="location" [(ngModel)]="location" >
+            </div>
+            <div class="col-auto">
+              <div class="form-check form-check-inline m-0">
+                <legend class="col-form-label col-sm-1 pt-0">Owner:</legend>
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" [(ngModel)]="owner" name="filterOwner" value="My">My
+              </div>
+              <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" [(ngModel)]="owner" name="filterOwner" value="Others">Others
+              </div>
+            </div>
+            <div class="col-auto">
+              <button class="btn btn-warning mb-2 btn-sm" *ngIf="title || description || location || owner" (click)="clearFilters()">Remove filters</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <app-event-detail [events]="eventsSubject.asObservable()"></app-event-detail>
+
+    <div class="row mb-3">
+      <div class="col-12 col-md-4 mt-3">
+        <div class="list-group-item font-weight-bold text-center">Ended</div>
+        <div class="event-list">
+          <a href="#" (click)="showEvtdetail(event)" class="list-group-item list-group-item-action list-group-item-secondary"
+             *ngFor="let event of (eventsListState$ | async).events | endedFilter:actClock | searchFilter:title:description:location:owner">
+            <span>{{event.title }}</span>
+          </a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mt-3">
+        <div class="list-group-item font-weight-bold text-center">Running</div>
+        <div class="event-list">
+          <a href="#" (click)="showEvtdetail(event)" class="list-group-item list-group-item-action list-group-item-danger"
+             *ngFor="let event of (eventsListState$ | async).events | runningFilter:actClock | searchFilter:title:description:location:owner">
+            {{event.title }}</a>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mt-3">
+        <div class="list-group-item ont-weight-bold font-weight-bold text-center">Future</div>
+        <div class="event-list">
+          <a href="#" (click)="showEvtdetail(event)" class="list-group-item list-group-item-action list-group-item-primary"
+             *ngFor="let event of (eventsListState$ | async).events | futureFilter:actClock | searchFilter:title:description:location:owner">
+            {{event.title }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-4">
+      <div class="col">
+        <form class="form-inline m-sm-0" (ngSubmit)="onAddEvent(f)" #f="ngForm">
+          <div class="col-auto px-0">
+            <label class="col-form-label col-form-label-md font-weight-bold">Add new event:</label>
+          </div>
+          <div class="form-group mb-2 px-2">
+            <label for="newEvtTitle" class="sr-only">Event</label>
+            <input placeholder="Title" type="text"  name="newEvtTitle" id="newEvtTitle" class="form-control form-control-sm" ngModel required>
+          </div>
+          <button class="btn btn-info btn-sm mb-2 mx-0" type="submit" [disabled]="!f.valid">Add</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+

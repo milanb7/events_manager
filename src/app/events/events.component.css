@@ -1,0 +1,29 @@
+/**  { outline: 0px solid red}*/
+
+html, body{
+  height:100%;
+  margin:0;
+  padding:0;
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  min-height: 100vh;
+}
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red ;
+}
+
+.form-vertical-middle{
+  vertical-align: middle;
+}
+
+.event-list{
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 0px;
+}
