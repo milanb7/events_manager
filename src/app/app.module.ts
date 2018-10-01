@@ -1,3 +1,4 @@
+// THIS IS A COMMENT 1
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
