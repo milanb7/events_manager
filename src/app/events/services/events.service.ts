@@ -14,7 +14,7 @@ export class ConfigService {
 
   constructor(private http: HttpClient) {}
 
-  getConfig() {
+  httpRequest() {
     return this.http.get<EventModel>(this.configUrl).pipe(
       retry(2),
       catchError(this.handleError)

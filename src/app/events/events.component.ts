@@ -6,9 +6,11 @@ import {Observable} from 'rxjs/Observable';
 import {interval} from 'rxjs/observable/interval';
 import 'rxjs/Rx';
 import {Subject} from 'rxjs/Subject';
+import * as fromApp from '../store/app.reducers';
 import {EventModel} from './../events/model/events.model';
 import * as EventsListActions from './../events/store/events.actions';
 import * as fromListActions from './../events/store/events.reducers';
+import {getEventListState} from './store';
 
 @Component({
   selector: 'app-events',
@@ -19,7 +21,7 @@ export class EventsComponent implements OnInit, OnDestroy  {
 
   /*Filters*/
   private title: string = '';
-  private description: string = '';
+  private description: string = '' ;
   private location: string = '';
   private owner: string = '';
 
@@ -33,14 +35,18 @@ export class EventsComponent implements OnInit, OnDestroy  {
   /*Event detail*/
   private eventsSubject: Subject<EventModel> = new Subject<EventModel>();
 
-  constructor(private store: Store<fromListActions.AppState>) {}
+
+  constructor(private store: Store<fromApp.AppState>) {
+
+  }
 
   ngOnInit() {
     const source = interval(1000);
     this.actClockObsSubscription = source.subscribe( ( ) => {this.actClock = Date.now(); }  );
 
-    this.eventsListState$ = this.store.select('eventsList');
+    this.eventsListState$ = this.store.select(getEventListState);
     this.store.dispatch(new EventsListActions.LoadData());
+
   }
 
 

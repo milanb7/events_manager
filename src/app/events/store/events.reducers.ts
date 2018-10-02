@@ -2,9 +2,6 @@ import * as _ from 'lodash';
 import {EventModel} from '../model/events.model';
 import * as EventsListActions from './events.actions';
 
-export interface AppState {
-  eventsList: State;
-}
 
 export interface State {
   events: Array<EventModel>;
@@ -18,21 +15,19 @@ const initialState: State = {
   loadFailure: null
 };
 
-
 function getMaxEvtId(events: EventModel[]): number {
   return Math.max(0, ...events.map(({id}) => id));
 }
 
-export function eventsListReducer(state = initialState, action: EventsListActions.EventsListActions) {
+export function eventsListReducer(state = initialState, action: EventsListActions.EventsListActions): State {
 
   switch (action.type) {
     case EventsListActions.LOAD_FAILURE:
       return{
         ...state,
         isLoading: false,
-        loadFailure: [action.payload]
+        loadFailure: action.payload
       };
-
     case EventsListActions.ADD_EVENT:
       const maxNumberAddEvt =  getMaxEvtId(state.events);
       const newEvent = {...action.payload, id: maxNumberAddEvt + 1};
@@ -64,3 +59,7 @@ export function eventsListReducer(state = initialState, action: EventsListAction
   }
 
 }
+
+export const getEvents = (state: State) => state.events;
+export const getIsLoading = (state: State) => state.isLoading;
+export const getLoadFailure = (state: State) => state.loadFailure;

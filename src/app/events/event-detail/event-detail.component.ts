@@ -4,9 +4,9 @@ import {Store} from '@ngrx/store';
 import * as _ from 'lodash';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Rx';
+import * as fromApp from '../../store/app.reducers';
 import {EventModel} from '../model/events.model';
 import * as EventsListActions from '../store/events.actions';
-import * as fromListActions from './../../events/store/events.reducers';
 
 
 export function jsonISOTimeValidator(control: FormControl) {
@@ -36,7 +36,7 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
   eventDetialForm: FormGroup;
 
-  constructor(private store: Store<fromListActions.AppState>) {}
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     this.eventsSubscription = this.events.subscribe((event) => {
