@@ -1,0 +1,71 @@
+<div class="row my-3" *ngIf="eventDetail">
+  <div class="col">
+
+    <form [formGroup]="eventDetialForm" (ngSubmit)="updateEvent()" class="border-top border-bottom border-info border-0 pl-2 pr-2 pb-2 pt-0 bg-info-events rounded">
+      <div class="form-row"><div class="form-group col-11 font-weight-bold text-center py-2">Event detail:</div><div class="form-group col-1 text-right"><button class=" btn btn-warning align-content-end btn-sm mt-2" type="button" (click)="CloseDetail()">X</button></div></div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputTitleD">*Title</label>
+          <input formControlName="title" type="text" class="form-control" id="inputTitleD" placeholder="Title">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputLocationD">Location</label>
+          <input formControlName="location" type="text" class="form-control" id="inputLocationD" placeholder="Location">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputDescriptionD">Description</label>
+        <textarea formControlName="description" class="form-control" id="inputDescriptionD" rows="3"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputStartTimeD">Start time full description</label>
+          <input formControlName="startTimeFull" type="text" class="form-control" id="inputStartTimeFullD" placeholder="Start time full" readonly>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEndTimeD">End time full description</label>
+          <input formControlName="endTimeFull" type="text" class="form-control" id="inputEndTimeFullD" placeholder="End time full" readonly>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputStartTimeD">*Start time</label>
+          <input formControlName="startTime" type="text" class="form-control" id="inputStartTimeD" placeholder="Start time">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputStartTimeLocalD">Local start time</label>
+          <input formControlName="localStartTime" type="text" class="form-control" id="inputStartTimeLocalD" placeholder="Local start time" readonly>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputEndTimeD">*End time</label>
+          <input formControlName="endTime" type="text" class="form-control" id="inputEndTimeD" placeholder="End time">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputEndTimeLocalD">Local end time</label>
+          <input formControlName="localEndTime" type="text" class="form-control" id="inputEndTimeLocalD" placeholder="Local end time" readonly>
+        </div>
+      </div>
+
+      <div class="form-row pt-0 pb-3">
+        <div class="form-check form-check-inline ml-0">
+          <legend class="col-form-label col-sm-1 pt-0 pr-0">Owner:</legend>
+        </div>
+        <div class="form-check form-check-inline">
+          <input formControlName="owners" class="form-check-input" type="radio" name="owners" id="radioOwnerMyD" value="My">
+          <label class="form-check-label" for="radioOwnerMyD">My</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input formControlName="owners" class="form-check-input" type="radio" name="owners" id="radioOwnerOthersD" value="Other">
+          <label class="form-check-label" for="radioOwnerOthersD">Other</label>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success btn-sm" [disabled]="!eventDetialForm.valid">Save</button>
+      <button class="btn btn-primary btn-sm" type="button" (click)="onDuplicateEvent(eventDetail)">Duplicate</button>
+      <button class="btn btn-danger btn-sm" type="button" (click)="onDeleteEvent(eventDetail.id)">Delete</button>
+
+    </form>
+  </div>
+</div>

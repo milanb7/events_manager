@@ -1,0 +1,7 @@
+input.ng-invalid.ng-touched{
+  border: 1px solid red ;
+}
+
+.bg-info-events{
+  background-color:  #b8e0e654;
+}
